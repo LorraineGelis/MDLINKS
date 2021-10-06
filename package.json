@@ -1,4 +1,19 @@
 {
-  "name": "md-links",
-  "version": "0.1.0"
+    "name": "md-links",
+    "version": "0.1.0",
+    "dependencies": {
+        "ansi-colors": "^4.1.1",
+        "filehound": "^1.17.4",
+        "marked": "^3.0.4",
+        "node-fetch": "^2.6.5"
+    },
+    "scripts": {
+        "test": "jest --coverage"
+    },
+    "devDependencies": {
+        "jest": "^27.2.4"
+    },
+    "bin": {
+        "mdlinks": "./cli.js"
+    }
 }
