@@ -1,16 +1,18 @@
+//Modulos nativos de node
 const fs = require('fs');
 const path = require('path');
-
-
-const fileHound = require('filehound');
-const fetch = require('node-fetch');
-const color = require("ansi-colors")
-const marked = require('marked');
 const { resolve } = require('path');
 
+//Librerias de node
+const fetch = require('node-fetch');
+
+//Librerias adicionales
+const fileHound = require('filehound');
+const color = require("ansi-colors")
+const marked = require('marked');
 
 
-
+//Funcion madre mdLinks que se encargará de retornar una promesa
 const mdLinks = (path, options) => {
     return new Promise((resolve, reject) => {
         if (options.validate === false && options.stats === false) {
@@ -61,7 +63,6 @@ const fileOrDirectory = (pathUser) => {
         fs.lstat(pathUser, (err, stats) => {
             if (err) {
                 //Aqui capturamos el error de las promesas
-                //console.log("Encontramos un error: la ruta o el archivo no es válido. Inténtalo de nuevo.")
                 reject(color.red(
                     `
                     ███████╗██████╗░██████╗░░█████╗░██████╗░
@@ -73,7 +74,6 @@ const fileOrDirectory = (pathUser) => {
 
                     Encontramos un error: La ruta o el archivo no es válido. Inténtalo de nuevo.
                     `));
-                //console.log("Encontramos un error: la ruta o el archivo no es válido. Inténtalo de nuevo.")
             } else if (stats.isDirectory()) {
                 resolve(readDirectory(pathUser));
             } else {
@@ -83,7 +83,7 @@ const fileOrDirectory = (pathUser) => {
     });
 };
 
-//FUNCION PARA BUSCAR LOS ARCHIVOS .MD
+//Funion que nos ayuda a encontrar archivos .MD
 const mdFile = file => {
     return new Promise((resolve, reject) => {
         let extFile = path.extname(file);
@@ -98,7 +98,7 @@ const mdFile = file => {
 
 // Función que extrae links, texto y rutas de archivos con extensión "md"
 
-const getLinks = (textFile, file) => {
+const getLinks = (data, file) => {
 
     //mark.js es una biblioteca escrita en JavaScript que puede transcodificar(un archivo pasa a otro formato) Markdown en línea
 
@@ -109,8 +109,6 @@ const getLinks = (textFile, file) => {
     const renderer = new marked.Renderer();
 
     //renderer Las opciones le permiten utilizar estilos personalizados para renderizar
-
-    //console.log(renderer.link, "¿Que me trae eso?")
     renderer.link = (href, title, text) => {
         arrayLinks.push({
             href: href,
@@ -118,7 +116,7 @@ const getLinks = (textFile, file) => {
             file: file,
         });
     }
-    marked(textFile, {
+    marked(data, {
         renderer: renderer
     });
 
@@ -221,59 +219,51 @@ const validateLinks = (validateLinks) => {
 
 // Stats para los links, total y unique.
 
-
-//let hrefNewArray = {};
-
 const statsLinks = (linkStats) => {
 
-    let hrefNewArray = {};
+    let statsArray = {};
 
-    hrefNewArray.Total = linkStats.length;
-    hrefNewArray.Unique = 0;
+    statsArray.Total = linkStats.length;
+    statsArray.Unique = 0;
     let uniqueLinks = new Set() //Permite almacenar valores unicos de cualquier tipo.
 
     linkStats.forEach(link => {
         uniqueLinks.add(link.href);
 
     });
-    hrefNewArray.Unique = uniqueLinks.size
+    statsArray.Unique = uniqueLinks.size
 
-    return `( ͡^ ͜ʖ ͡^)✌      Total: ${hrefNewArray.Total} 
-            \n ( ͡~ ͜ʖ ͡°)     Unique: ${hrefNewArray.Unique} `;
-    //return hrefNewArray
-
+    return `( ͡^ ͜ʖ ͡^)✌      Total: ${statsArray.Total} 
+            \n ( ͡~ ͜ʖ ͡°)     Unique: ${statsArray.Unique} `;
 
 
 }
 
-// Enlaces rotos, muestra el total, unique y broken.
+// Función que nos arroja el total de enlaces, unique y broken.
 
 const statsValidate = (linkStats) => {
 
-    const statsObject = {};
-    statsObject.Total = linkStats.length
-    statsObject.Unique = 0;
-    statsObject.Broken = 0;
+    const statsValidateObject = {};
+    statsValidateObject.Total = linkStats.length
+    statsValidateObject.Unique = 0;
+    statsValidateObject.Broken = 0;
     const uniqueLinks = new Set();
 
     linkStats.forEach(link => {
         uniqueLinks.add(link.href);
         if (link.messajeStatus === 'fail') {
-            statsObject.Broken += 1;
+            statsValidateObject.Broken += 1;
         }
     });
 
-    statsObject.Unique = uniqueLinks.size
+    statsValidateObject.Unique = uniqueLinks.size
 
-    return ` ( ͡^ ͜ʖ ͡^)✌  Total: ${statsObject.Total} 
-                \n ( ͡~ ͜ʖ ͡°) Unique: ${statsObject.Unique} 
-                \n (ง︡'-'︠)ง  Broken: ${statsObject.Broken}`
-        //return statsObject;
-
-
+    return ` ( ͡^ ͜ʖ ͡^)✌  Total: ${statsValidateObject.Total} 
+                \n ( ͡~ ͜ʖ ͡°) Unique: ${statsValidateObject.Unique} 
+                \n (ง︡'-'︠)ง  Broken: ${statsValidateObject.Broken}`
 }
 
-
+//En este bloque de codigo exportamos las funciones.
 module.exports = {
     mdLinks,
     fileOrDirectory,
