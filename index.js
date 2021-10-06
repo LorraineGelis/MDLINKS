@@ -45,7 +45,7 @@ const mdLinks = (path, options) => {
                 .then(res => {
                     validateLinks(res)
                         .then(res => {
-                            resolve(statsValidate(res))
+                            resolve(statsValidate(res));
                         })
                 })
                 .catch(err => {
