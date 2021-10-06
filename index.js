@@ -71,7 +71,7 @@ const fileOrDirectory = (pathUser) => {
                     ███████╗██║░░██║██║░░██║╚█████╔╝██║░░██║
                     ╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝
 
-                    Encontramos un error: la ruta o el archivo no es válido. Inténtalo de nuevo.
+                    Encontramos un error: La ruta o el archivo no es válido. Inténtalo de nuevo.
                     `));
                 //console.log("Encontramos un error: la ruta o el archivo no es válido. Inténtalo de nuevo.")
             } else if (stats.isDirectory()) {
