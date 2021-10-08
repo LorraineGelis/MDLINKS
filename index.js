@@ -57,6 +57,7 @@ const mdLinks = (path, options) => {
     });
 };
 
+
 //Funcion que valida si es archivo o directorio
 const fileOrDirectory = (pathUser) => {
     return new Promise((resolve, reject) => {
@@ -72,7 +73,7 @@ const fileOrDirectory = (pathUser) => {
                     ███████╗██║░░██║██║░░██║╚█████╔╝██║░░██║
                     ╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝
 
-                    Encontramos un error: La ruta o el archivo no es válido. Inténtalo de nuevo.
+                    Encontramos un error: La ruta o el archivo no es válido. Necesita ayuda ingrese --help.
                     `));
             } else if (stats.isDirectory()) {
                 resolve(readDirectory(pathUser));
@@ -214,6 +215,7 @@ const validateLinks = (validateLinks) => {
     return Promise.all(linksValidateFetch)
 
 
+
 }
 
 
@@ -266,12 +268,4 @@ const statsValidate = (linkStats) => {
 //En este bloque de codigo exportamos las funciones.
 module.exports = {
     mdLinks,
-    fileOrDirectory,
-    mdFile,
-    readDirectory,
-    validateLinks,
-    statsLinks,
-    statsValidate,
-    readMdFile
-
 }

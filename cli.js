@@ -6,6 +6,9 @@ const color = require("ansi-colors")
 //Opciones desde la consola
 let pathUser = process.argv[2]; // la invocación completa de la línea de comandos
 const pathRoute = require('path');
+const { resolve } = require('path');
+const { rejects } = require('assert');
+const { Console } = require('console');
 let optionOne = process.argv[3];
 let optionTwo = process.argv[4];
 const help = process.argv.includes("--help")
@@ -22,7 +25,6 @@ console.log(color.cyan(`
 console.log(color.magenta(`FILE NAME:  ${pathUser}`))
 
 pathUser = pathRoute.resolve(pathUser); //Convertimos ruta relativa en absoluta
-//console.log('la ruta convertida en absoluta es ' + pathUser);
 
 console.log(color.magenta(`FILE PATH:  ${pathUser}`))
 
@@ -59,6 +61,7 @@ if (
 
 mdLinks.mdLinks(pathUser, options)
     .then(res => {
+
         console.log(res);
     })
     .catch(err => {
