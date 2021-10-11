@@ -71,7 +71,7 @@ Autora:
 [Lorraine Gelis Diaz](https://github.com/LorraineGelis)
   
 
- Proximamente más versiones y mejoras en el código. ✌️
+ Proximamente más versiones y mejoras en el código.. ✌️
 
   
 
