@@ -52,20 +52,27 @@ El ejecutable de esta librería se debe poder ejecutar de la siguiente manera a 
 md-links <path> [options]
   
 Por ejemplo:
+  
 1.Cuando ingresas una ruta incorrecta:
+  <img src= https://github.com/LorraineGelis/MDLINKS/blob/main/img/RutaIncorrecta.png>
 
+2.Cuando ingresas una ruta que no posea links:
+   <img src= https://github.com/LorraineGelis/MDLINKS/blob/main/img/ArchivosSinenlaces.png>
   
-2.Cuando ingresas una ruta que no posea links
+3.Cuando ingresas el comando --help visualizaras una sección de ayuda:
+   <img src=https://github.com/LorraineGelis/MDLINKS/blob/main/img/Comando--help.png>
   
-3.Cuando ingresas el comando --help visualizaras una sección de ayuda
-  
-4. Cuando ingresas una ruta correcta, pero sin las respectivas opciones
+4. Cuando ingresas una ruta correcta, pero sin las respectivas opciones:
+  <img src=https://github.com/LorraineGelis/MDLINKS/blob/main/img/RutaSinOptions.png>
 
-5. Cuando ingresas una ruta correcta, con la opción --validate
+5. Cuando ingresas una ruta correcta, con la opción --validate:
+  <img src=https://github.com/LorraineGelis/MDLINKS/blob/main/img/rutaoptionsvalidate.png>
   
-6. Cuando ingreses una ruta correcta y con la opción --stats
+6. Cuando ingreses una ruta correcta y con la opción --stats:
+  <img src=https://github.com/LorraineGelis/MDLINKS/blob/main/img/rutaoptionstats.png>
 
-7. Cuando ingreses una ruta y las opciones --validate --stats
+7. Cuando ingreses una ruta y las opciones --validate --stats:
+  <img src=https://github.com/LorraineGelis/MDLINKS/blob/main/img/rutaoptionsvalidatestats.png>
 
 Autora:
 [Lorraine Gelis Diaz](https://github.com/LorraineGelis)
